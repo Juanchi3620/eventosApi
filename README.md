@@ -1,2 +1,2 @@
 # eventosApi
-This is a Api for to Events
+This is a Api for Events
