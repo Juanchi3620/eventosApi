@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Pagina de inicio de organizadores</title>
+</head>
+<body>
+<div>
+    <h1>Estoy en la pagina de organizadores</h1>
+</div>
+
+<table border="2">
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>apellido</th>
+        <th>email</th>
+        <th>orgaizacion</th>
+        <th>posicion</th>
+        <th>numero de telefono</th>
+        <th>Cedula</th>
+    </tr>
+    <tr th:each="organizador : ${organizadores}">
+        <td th:text="${organizador.getId()}"></td>
+        <td th:text="${organizador.getName()}"></td>
+        <td th:text="${organizador.getLastName()}"></td>
+        <td th:text="${organizador.getEmail()}"></td>
+        <td th:text="${organizador.getOrganization()}"></td>
+        <td th:text="${organizador.getPosition()}"></td>
+        <td th:text="${organizador.getPhoneNumber()}"></td>
+        <td th:text="${organizador.getCard()}"></td>
+    </tr>
+</table>
+</body>
+</html>

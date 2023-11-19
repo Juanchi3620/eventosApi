@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Pagina de inicio de eventos</title>
+</head>
+<body>
+    <div>
+        <h1>Estoy en la pagina de eventos</h1>
+    </div>
+
+    <table border="2">
+        <tr>
+            <th>id</th>
+            <th>Lugar</th>
+            <th>Horarios</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Número de cupos</th>
+            <th>Número de asistentes</th>
+            <th>Patrocinadores</th>
+            <th>recursos</th>
+            <th>Nombre del organizador</th>
+        </tr>
+        <tr th:each="evento : ${eventos}">
+            <td th:text="${evento.getId()}"></td>
+            <td th:text="${evento.getPlace()}"></td>
+            <td th:text="${evento.getSchedules()}"></td>
+            <td th:text="${evento.getDateEvent()}"></td>
+            <td th:text="${evento.getName()}"></td>
+            <td th:text="${evento.getDescription()}"></td>
+            <td th:text="${evento.getNumPlaces()}"></td>
+            <td th:text="${evento.getNumPersons()}"></td>
+            <td th:text="${evento.getSponsor()}"></td>
+            <td th:text="${evento.getRecurses()}"></td>
+            <td th:text="${evento.organizer.getName()}"></td>
+        </tr>
+    </table>
+</body>
+</html>
