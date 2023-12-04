@@ -1,6 +1,7 @@
 package com.evento.eventosApi.controller;
 
 
+import com.evento.eventosApi.entity.DTO.SpeakerDTO;
 import com.evento.eventosApi.entity.Speaker;
 import com.evento.eventosApi.service.SpeakerService;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +31,8 @@ public class SpeakerController {
     }
 
     @PostMapping("/guardar")
-    public Speaker guardarSpeaker(@RequestBody Speaker speaker){
-        return speakerService.guardarSpeaker(speaker);
+    public Speaker guardarSpeaker(@RequestBody SpeakerDTO speakerDTO){
+        return speakerService.guardarSpeaker(speakerDTO);
     }
 
     @PutMapping("/actualizar/{id}")

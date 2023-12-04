@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -13,22 +14,43 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Speaker {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
-    private String lastName; //apellido
-    private String email; //correo
-    private String organization; //Organizacion
-    private String position; //Cargo
+    private String nombre;
+    private String apellido; //apellido
+    private String organizacion; //Organizacion
+    private String cargo; //Cargo
+    private String nacionalidad;
+    private Long cedula;
+
+    @OneToOne
+    @JoinColumn(name="usuario_id")
+    @JsonBackReference
+    private Usuario usuario;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JsonBackReference
     @JoinTable(
-            name = "speaker_participation", joinColumns = @JoinColumn(name = "speaker_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "participation_id", referencedColumnName = "id")
+            name = "speaker_participation", joinColumns = @JoinColumn(name = "ponente_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ponencia_id", referencedColumnName = "id")
     )
-    private List<Participation> participations;
+    private List<Ponencia> ponencias;
+
+    @ManyToMany(mappedBy = "ponentes")
+    @JsonBackReference
+    private List<Evento> eventos;
+
+    public Speaker(String nombre, String apellido, String organizacion, String cargo, String nacionalidad, Long cedula, Usuario usuario) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.organizacion = organizacion;
+        this.cargo = cargo;
+        this.nacionalidad = nacionalidad;
+        this.cedula = cedula;
+        this.usuario = usuario;
+    }
 }

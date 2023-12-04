@@ -1,6 +1,7 @@
 package com.evento.eventosApi.controller;
 
 import com.evento.eventosApi.entity.Assistant;
+import com.evento.eventosApi.entity.DTO.AssistantDTO;
 import com.evento.eventosApi.service.AssistantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +26,8 @@ public class AssistantController {
     }
 
     @PostMapping("/guardar")
-    public Assistant guardarAsistente(@RequestBody Assistant assistant){
-        return assistantService.guardarAssistant(assistant);
+    public Assistant guardarAsistente(@RequestBody AssistantDTO assistantDTO){
+        return assistantService.guardarAssistant(assistantDTO);
     }
 
     @PutMapping("/actualizar/{id}")

@@ -10,7 +10,7 @@ public interface EventService {
     Evento saveEvent(Evento evento);
     Evento updateEvent(Long id, Evento evento);
     void deleteEvent(Long id);
-    Optional<Evento> findByname(String name);
+    Optional<Evento> findByname(String nombre);
     Optional<Evento> findById(Long id);
 
 }

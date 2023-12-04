@@ -1,5 +1,6 @@
 package com.evento.eventosApi.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,21 +9,23 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "participations")
+@Table(name = "ponencias")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Participation {
+public class Ponencia {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String subject; //tema
-    private String presentation; //ponencia
+    private String tema;
+    private String descripcion;
 
-    @ManyToMany(mappedBy = "participations")
-    private List<Evento> events;
+    @ManyToMany(mappedBy = "ponencias")
+    @JsonBackReference
+    private List<Speaker> ponentes;
 
-    @ManyToMany(mappedBy = "participations")
+    @ManyToMany(mappedBy = "ponencias")
+    @JsonBackReference
     private List<Speaker> speakers;
 
 }

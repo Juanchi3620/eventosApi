@@ -1,9 +1,8 @@
 package com.evento.eventosApi.controller;
 
+import com.evento.eventosApi.entity.Actividad;
 import com.evento.eventosApi.entity.Admin;
-import com.evento.eventosApi.entity.DTO.AdminDTO;
-import com.evento.eventosApi.entity.Evento;
-import com.evento.eventosApi.service.AdminService;
+import com.evento.eventosApi.service.ActividadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,41 +13,42 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/admins")
+@RequestMapping("/actividades")
 @Slf4j
-public class AdminController {
+public class ActividadController {
     @Autowired
-    AdminService adminService;
+    ActividadService actividadService;
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
-    public List<Admin> verAdmins(Model model) {
+    public List<Actividad> verActividades(Model model) {
         log.info("Estoy en el controlador");
-        return adminService.verAdmins();
+        return actividadService.verActividades();
     }
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Admin> findById(@PathVariable Long id) {
-        return adminService.findById(id);
+    public Optional<Actividad> findById(@PathVariable Long id) {
+        return actividadService.findById(id);
     }
 
     @PostMapping("/guardar")
     @ResponseStatus(HttpStatus.CREATED)
-    public Admin saveAdmin(@RequestBody AdminDTO adminDTO) {
-        return adminService.guardarAdmin(adminDTO);
+    public Actividad saveActividad(@RequestBody Actividad actividad) {
+        return actividadService.guardarActividad(actividad);
     }
 
     @PutMapping("/actualizar/{id}")
     @ResponseStatus(HttpStatus.CREATED)
-    public Admin updateAdmin(@PathVariable Long id, @RequestBody Admin admin) {
-        return adminService.actualizarAdmin(id, admin);
+    public Actividad actualizarActividad(@PathVariable Long id, @RequestBody Actividad actividad) {
+        return actividadService.actualizarActividad(id, actividad);
     }
 
     @DeleteMapping("/borrar/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public String deleteAdmin(@PathVariable Long id) {
-        adminService.deleteAdmin(id);
+    public String deleteActividad(@PathVariable Long id) {
+        actividadService.deleteActividad(id);
         return "Successfully deleted";
     }
+
 }

@@ -1,11 +1,10 @@
 package com.evento.eventosApi.controller;
 
-import com.evento.eventosApi.entity.Evento;
+import com.evento.eventosApi.entity.DTO.OrganizerDTO;
 import com.evento.eventosApi.entity.Organizer;
 import com.evento.eventosApi.service.OrganizerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,7 @@ public class OrganizerController {
     }
 
     @PostMapping("/guardar")
-    public Organizer guardarOrganizador(@RequestBody Organizer organizador){
+    public Organizer guardarOrganizador(@RequestBody OrganizerDTO organizador){
         return organizerService.saveOrganizer(organizador);
     }
 
@@ -44,6 +43,4 @@ public class OrganizerController {
         organizerService.deleteOrganizer(id);
         return "El organizador se ha borrado con éxito";
     }
-
-
 }
