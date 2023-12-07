@@ -2,6 +2,7 @@ package com.evento.eventosApi.controller;
 
 import com.evento.eventosApi.entity.Actividad;
 import com.evento.eventosApi.entity.Admin;
+import com.evento.eventosApi.entity.DTO.ActividadDTO;
 import com.evento.eventosApi.service.ActividadService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class ActividadController {
 
     @PostMapping("/guardar")
     @ResponseStatus(HttpStatus.CREATED)
-    public Actividad saveActividad(@RequestBody Actividad actividad) {
-        return actividadService.guardarActividad(actividad);
+    public Actividad saveActividad(@RequestBody ActividadDTO actividadDTO) {
+        return actividadService.guardarActividad(actividadDTO);
     }
 
     @PutMapping("/actualizar/{id}")

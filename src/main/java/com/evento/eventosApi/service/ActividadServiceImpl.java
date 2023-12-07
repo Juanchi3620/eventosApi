@@ -1,7 +1,11 @@
 package com.evento.eventosApi.service;
 
 import com.evento.eventosApi.entity.Actividad;
+import com.evento.eventosApi.entity.DTO.ActividadDTO;
+import com.evento.eventosApi.entity.Evento;
 import com.evento.eventosApi.repository.ActividadRepository;
+import com.evento.eventosApi.repository.EventRepository;
+import jdk.jfr.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +19,8 @@ public class ActividadServiceImpl implements ActividadService{
 
     @Autowired
     ActividadRepository actividadRepository;
+    @Autowired
+    EventRepository eventRepository;
 
     @Transactional(readOnly = true)
     @Override
@@ -24,7 +30,11 @@ public class ActividadServiceImpl implements ActividadService{
 
     @Transactional
     @Override
-    public Actividad guardarActividad(Actividad actividad) {
+    public Actividad guardarActividad(ActividadDTO actividadDTO)
+    {
+        Evento evento = eventRepository.findByNombre(actividadDTO.getEvento().getNombre());
+        Actividad actividad = new Actividad(actividadDTO.getNombre(),actividadDTO.getFecha(),actividadDTO.getHora_inicio(),actividadDTO.getHora_final(),actividadDTO.getEvento());
+
         return actividadRepository.save(actividad);
     }
 

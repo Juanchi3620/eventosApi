@@ -27,7 +27,7 @@ public class EventController {
     }
 
     @GetMapping("/{name}")
-    public Optional<Evento> findByName(@PathVariable String nombre){
+    public Evento findByName(@PathVariable String nombre){
         log.info("si entré");
         log.info(eventService.findByname(nombre).toString());
         return eventService.findByname(nombre);

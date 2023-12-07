@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "events")
+@Table(name = "eventos")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -65,4 +65,148 @@ public class Evento {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento", cascade = CascadeType.ALL)
     @JsonBackReference
     List<Actividad> actividades;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLugar() {
+        return Lugar;
+    }
+
+    public void setLugar(String lugar) {
+        Lugar = lugar;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getNro_cupos() {
+        return nro_cupos;
+    }
+
+    public void setNro_cupos(Integer nro_cupos) {
+        this.nro_cupos = nro_cupos;
+    }
+
+    public Integer getNum_asistentes() {
+        return num_asistentes;
+    }
+
+    public void setNum_asistentes(Integer num_asistentes) {
+        this.num_asistentes = num_asistentes;
+    }
+
+    public String getPatrocinadores() {
+        return patrocinadores;
+    }
+
+    public void setPatrocinadores(String patrocinadores) {
+        this.patrocinadores = patrocinadores;
+    }
+
+    public Long getPrecio_asistente() {
+        return precio_asistente;
+    }
+
+    public void setPrecio_asistente(Long precio_asistente) {
+        this.precio_asistente = precio_asistente;
+    }
+
+    public Long getPrecio_ponente() {
+        return precio_ponente;
+    }
+
+    public void setPrecio_ponente(Long precio_ponente) {
+        this.precio_ponente = precio_ponente;
+    }
+
+    public Long getPresupuesto_estimado() {
+        return presupuesto_estimado;
+    }
+
+    public void setPresupuesto_estimado(Long presupuesto_estimado) {
+        this.presupuesto_estimado = presupuesto_estimado;
+    }
+
+    public Long getTotal_gastado() {
+        return total_gastado;
+    }
+
+    public void setTotal_gastado(Long total_gastado) {
+        this.total_gastado = total_gastado;
+    }
+
+    public Long getTotal_ingresos() {
+        return total_ingresos;
+    }
+
+    public void setTotal_ingresos(Long total_ingresos) {
+        this.total_ingresos = total_ingresos;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Organizer getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(Organizer organizer) {
+        this.organizer = organizer;
+    }
+
+    public List<Assistant> getAsistentes() {
+        return asistentes;
+    }
+
+    public void setAsistentes(List<Assistant> asistentes) {
+        this.asistentes = asistentes;
+    }
+
+    public List<Speaker> getPonentes() {
+        return ponentes;
+    }
+
+    public void setPonentes(List<Speaker> ponentes) {
+        this.ponentes = ponentes;
+    }
+
+    public List<Recurso> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(List<Recurso> recursos) {
+        this.recursos = recursos;
+    }
+
+    public List<Actividad> getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(List<Actividad> actividades) {
+        this.actividades = actividades;
+    }
 }

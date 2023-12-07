@@ -34,4 +34,12 @@ public class Actividad {
     @JoinColumn(name = "id_evento")
     @JsonBackReference
     private Evento evento;
+
+    public Actividad(String nombre, Date fecha, Time hora_inicio, Time hora_final, Evento evento) {
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.hora_inicio = hora_inicio;
+        this.hora_final = hora_final;
+        this.evento = evento;
+    }
 }

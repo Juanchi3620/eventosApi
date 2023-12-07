@@ -80,7 +80,7 @@ public class EventServiceImpl implements EventService{
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<Evento> findByname(String nombre) {
+    public Evento findByname(String nombre) {
         return eventRepository.findByNombre(nombre);
     }
 
